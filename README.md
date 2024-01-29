@@ -1,13 +1,11 @@
-Overview:
+## Description: This repository consists of two projects: ASP.NET Core Web API and React. 
+
+# Overview:
 These are APIs that ASP.NET Core C# App will export:
 
 ![swagger](https://github.com/blessedneelesh/CustomerCRUD_CSharp_React/assets/54150796/53a60d15-7783-4034-989a-62ca16e4856b)
 
-– CRUD operations with ASP.NET Core Web API services.
-
-– The database is MS SQL using SQL Server Management Studio.
-
-Technology
+## Technology
 
 .NET Core 6
 
@@ -17,11 +15,12 @@ Entity Framework Core (Database First Approach)
 
 Swagger
 
-
+## Frontend React
+The front end looks like:
 
 ![fe](https://github.com/blessedneelesh/CustomerCRUD_CSharp_React/assets/54150796/03de359a-abf5-4c70-a5b3-312f703e67fb)
 
-Technology
+## Technology
 
 React 18.2.0------> useState, useEffect, useContext
 
