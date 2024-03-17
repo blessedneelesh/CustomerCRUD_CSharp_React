@@ -19,7 +19,7 @@ const Add = (props) => {
       const response = await addCustomer(values);
       messageApi.open({
         type: "success",
-        content: response.data,
+        content: response.data[0],
       });
 
       setIsBtnLoading(false);

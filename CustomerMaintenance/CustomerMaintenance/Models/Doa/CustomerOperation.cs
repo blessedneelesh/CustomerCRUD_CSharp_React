@@ -1,5 +1,6 @@
 ﻿using CustomerMaintenance.Models.DataLayer;
 using CustomerMaintenance.Models.Dto;
+using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 
 namespace CustomerMaintenance.Models.Doa
@@ -7,7 +8,7 @@ namespace CustomerMaintenance.Models.Doa
     public class CustomerOperation
     {
        static CustomerMAContext dbContext=new CustomerMAContext();
-        public static List<CustomerDto> GetCustomer()
+        public List<CustomerDto> GetCustomer()
         {
             //var lst = (from n in dbContext.customers.Include("zip1") select n).ToList();
             var lst = (from n in dbContext.Customers
@@ -28,13 +29,27 @@ namespace CustomerMaintenance.Models.Doa
             return lst;
         }
 
-        public static void AddCustomer(Customer newCust)
+        public void AddCustomer(Customer newCust)
         {
-            dbContext.Customers.Add(newCust);
-            dbContext.SaveChanges();
+                dbContext.Customers.Add(newCust);
+                dbContext.SaveChanges();
+        
+            
+  
+           /* var lst = (from n in dbContext.Customers
+                       select new CustomerDto
+                       {
+                           CustomerId = n.CustomerId,
+                           Name = n.Name,
+                           Address = n.Address,
+                           City = n.City,
+                           StateCode = n.StateCode,
+                           ZipCode = n.ZipCode
+                       }).ToList().LastOrDefault();
+            return lst;*/
         }
 
-        public static void DeleteCustomer(int deleteCustomer)
+        public void DeleteCustomer(int deleteCustomer)
         {
             try
             {
@@ -54,7 +69,7 @@ namespace CustomerMaintenance.Models.Doa
 
         }
 
-        public static CustomerDto GetCustomerById(int id)
+        public CustomerDto GetCustomerById(int id)
         {
             var lst = (from n in dbContext.Customers
                        where n.CustomerId == id
@@ -70,9 +85,9 @@ namespace CustomerMaintenance.Models.Doa
             return lst;
         }
 
-        public static void UpdateCustomer(int id, Customer cust)
+        public Customer UpdateCustomer(int id, Customer cust)
         {
-            List<Customer> lst = (from n in dbContext.Customers
+           List<Customer> lst = (from n in dbContext.Customers
                                   where n.CustomerId == id
                                   select n).ToList();
 
@@ -87,9 +102,10 @@ namespace CustomerMaintenance.Models.Doa
             }
 
             dbContext.SaveChanges();
+            return cust;
         }
 
-        public  static async Task<List<StateDto>> GetState()
+        public async Task<List<StateDto>> GetState()
         {
             using (var myContext = new CustomerMAContext())
             {

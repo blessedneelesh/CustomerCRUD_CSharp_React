@@ -7,7 +7,6 @@ import { Edit } from "../Edit";
 
 function List() {
   const [data, setData] = useState([]);
-  console.log(data, "data");
   const [isLoading, setIsLoading] = useState(false);
   const [editedDataProp, setEditedDataProp] = useState([]);
 
@@ -78,6 +77,7 @@ function List() {
   const handleEditCancel = () => {
     setIsEditModalOpen(false);
   };
+
   useEffect(() => getcust, []);
 
   const columns = [

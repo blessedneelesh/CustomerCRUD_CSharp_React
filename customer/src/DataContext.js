@@ -32,6 +32,7 @@ export default function DataProvider({ children }) {
   const addCustomer = async (data) => {
     console.log(data + "from datacontext");
     let result = await Axios.post(baseUrl + "/Customer/AddCustomer", data);
+    console.log(result, "response");
     return result;
   };
 
